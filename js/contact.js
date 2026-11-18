@@ -9,7 +9,7 @@
                Leave '' to switch visitor counting off.
    ------------------------------------------------------------------ */
 window.SITE = {
-  emailReversed: 'moc.liamg@iksnynsmohpis',
+  emailReversed: 'moc.liamg@isoknysmohpis',
   linkedin: 'https://www.linkedin.com/in/sipho-nkosi',
   cv: '',
   goatcounter: 'sipho'
@@ -25,20 +25,20 @@ window.SITE = {
     el.innerHTML=b.join('');
     const m=el.querySelector('[data-mail]'); if(m) m.addEventListener('click',e=>{ e.preventDefault(); location.href='mailto:'+mail(); }); }
 
-  /* contact form — sent through FormSubmit to the address above */
+  /* contact form — a normal form post to FormSubmit, which emails it to the address above
+     and then sends the visitor back here with ?sent=1 */
   const f=document.getElementById('cform');
   if(f){ const st=f.querySelector('.fstat'), btn=f.querySelector('button[type=submit]');
-    f.addEventListener('submit',async e=>{ e.preventDefault(); const d=new FormData(f);
+    if(/[?&]sent=1/.test(location.search)){ st.textContent='Thank you — your message has been sent.'; history.replaceState(null,'',location.pathname+'#contact'); }
+    const hid=(n,v)=>{ let i=f.querySelector('input[name="'+n+'"]'); if(!i){ i=document.createElement('input'); i.type='hidden'; i.name=n; f.appendChild(i); } i.value=v; };
+    f.addEventListener('submit',e=>{ e.preventDefault(); const d=new FormData(f);
       if(d.get('_honey')) return;                      // a bot filled the hidden field
       const name=(d.get('name')||'').trim(), email=(d.get('email')||'').trim(), msg=(d.get('message')||'').trim();
       if(!name||!msg||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ st.textContent='Please fill in your name, a valid email and a message.'; return; }
-      btn.disabled=true; st.textContent='Sending…';
-      try{ const r=await fetch('https://formsubmit.co/ajax/'+mail(),{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
-          body:JSON.stringify({name,email,message:msg,_subject:'Portfolio enquiry from '+name,_template:'table',_captcha:'false'})});
-        const j=await r.json().catch(()=>({})); if(r.ok&&String(j.success)!=='false'){ f.reset(); st.textContent='Thank you — your message has been sent.'; }
-        else throw new Error(j.message||'failed'); }
-      catch(err){ st.innerHTML='Sorry, that didn’t go through. Please <a href="#contact" data-mail2 style="text-decoration:underline">email me directly</a>.'; const a=st.querySelector('[data-mail2]'); if(a) a.onclick=ev=>{ev.preventDefault(); location.href='mailto:'+mail();}; }
-      btn.disabled=false; }); }
+      hid('_subject','Portfolio enquiry from '+name); hid('_replyto',email); hid('_template','table'); hid('_captcha','false');
+      hid('_next',location.origin+location.pathname.replace(/[^/]*$/,'')+'index.html?sent=1#contact');
+      f.action='https://formsubmit.co/'+mail(); f.method='POST'; btn.disabled=true; st.textContent='Sending…';
+      HTMLFormElement.prototype.submit.call(f); }); }
 
   /* visitor counting (GoatCounter: privacy-friendly, no cookies) */
   const gc=S.goatcounter; if(!gc) return; const host='https://'+gc+'.goatcounter.com';
