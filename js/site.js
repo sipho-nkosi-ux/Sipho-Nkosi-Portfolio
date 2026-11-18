@@ -4,7 +4,7 @@ const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelect
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---- old single-page links (#project-name) now open the project's own page ---- */
-if(document.body.dataset.home&&location.hash){ const h=location.hash.slice(1); const map={'ans-offloading-platform':1,'cat-ladder':1,'silo-platform':1,'boiler-building':1,'bund-walkway':1,'erf-2433':1,'capital-park':1,'chantelle':1,'doornpoort':1,'secunda':1,'embalenhle':1};
+if(document.body.dataset.home&&location.hash){ const h=location.hash.slice(1); const map={'ans-offloading-platform':1,'cat-ladder':1,'silo-platform':1,'boiler-building':1,'bund-walkway':1,'erf-2433':1,'capital-park':1,'chantelle':1,'doornpoort':1,'secunda':1,'steel-gate':1,'embalenhle':1};
   if(map[h]){ location.replace(h+'.html'); return; } }
 
 /* ---- scroll progress line ---- */

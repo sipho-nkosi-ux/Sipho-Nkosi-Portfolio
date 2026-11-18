@@ -92,3 +92,36 @@ const xBrace = (a,b,z0,z1,s,mm)=>[{a:[a[0],a[1],z0],b:[b[0],b[1],z1],s:s||.08,m:
 })();
 
 })();
+
+// ---------- STEEL SLATTED DOUBLE SWING GATE (dimensions from GATE-01..05 Rev C) ----------
+(()=>{ const P=window.PROJECT3D;
+  const POST=.15, HG=.02, LA=3.0, LB=1.0, CG=.01, GC=.05, LH=1.7, PH=1.8, RW=.076, RD=.038, SL=.025, NS=25, GAP=(LH-2*RW-NS*SL)/(NS+1);
+  const XA0=POST+HG, XA1=XA0+LA, XB0=XA1+CG, XB1=XB0+LB, XP2=XB1+HG, W=XP2+POST, M=[];
+  // posts with cap plates
+  [POST/2, XP2+POST/2].forEach(x=>M.push({a:[x,0,0],b:[x,0,PH],s:[POST,POST],m:'steel'}));
+  // a leaf: mitred RHS frame + slats
+  const leaf=(x0,L,stiff)=>{ const x1=x0+L, z0=GC, z1=GC+LH;
+    M.push({a:[x0,0,z0+RW/2],b:[x1,0,z0+RW/2],s:[RD,RW],m:'steel'},{a:[x0,0,z1-RW/2],b:[x1,0,z1-RW/2],s:[RD,RW],m:'steel'});
+    M.push({a:[x0+RW/2,0,z0+RW],b:[x0+RW/2,0,z1-RW],s:[RW,RD],m:'steel'},{a:[x1-RW/2,0,z0+RW],b:[x1-RW/2,0,z1-RW],s:[RW,RD],m:'steel'});
+    for(let i=0;i<NS;i++){ const z=z0+RW+GAP+SL/2+i*(SL+GAP); M.push({a:[x0+RW,0,z],b:[x1-RW,0,z],s:[SL,SL],m:'steel'}); }
+    if(stiff) M.push({a:[(x0+x1)/2,-RD/2-.0025,z0+RW],b:[(x0+x1)/2,-RD/2-.0025,z1-RW],s:[.025,.005],m:'steel'}); };
+  leaf(XA0,LA,true); leaf(XB0,LB,false);
+  // 40x5 meeting stop on leaf A (outside face), striker on leaf A edge
+  M.push({a:[XA1+.005,RD/2+.0025,GC],b:[XA1+.005,RD/2+.0025,GC+LH],s:[.04,.005],m:'steel'});
+  // bullet hinges Ø20 × 150: 3 on leaf A, 2 on leaf B (centres 350 / 950 / 1 550 above ground)
+  [[POST+HG/2,[.35,.95,1.55]],[XP2-HG/2,[.35,1.55]]].forEach(([x,zs])=>zs.forEach(z=>M.push({a:[x,0,z-.075],b:[x,0,z+.075],s:.02,m:'galv'})));
+  // lock pocket and lever handles on leaf B (spindle 1 000 above ground)
+  M.push({a:[XB0+RW+.025,0,.88],b:[XB0+RW+.025,0,1.12],s:[.05,.04],m:'steel'});
+  [-1,1].forEach(sd=>{ M.push({a:[XB0+RW+.03,sd*.035,.9],b:[XB0+RW+.03,sd*.035,1.08],s:[.03,.008],m:'galv'}); M.push({a:[XB0+RW+.03,sd*.05,1.0],b:[XB0+RW+.14,sd*.05,1.0],s:.018,m:'galv'}); });
+  // Ø16 drop bolt on leaf A, inside face, with bent handle and pipe guides
+  const xb=XA1-.12, yb=-RD/2-.03;
+  M.push({a:[xb,yb,-.06],b:[xb,yb,.6],s:.016,m:'galv'},{a:[xb,yb,.6],b:[xb-.1,yb,.6],s:.016,m:'galv'});
+  [.11,.45].forEach(z=>M.push({a:[xb,yb,z-.02],b:[xb,yb,z+.02],s:.027,m:'galv'}));
+  P.gate={ front:[0,1], view:'corner', members:M,
+    plates:[{x:0,y:-POST/2,w:POST,d:POST,z:PH+.005,t:.005,m:'steel'},{x:XP2,y:-POST/2,w:POST,d:POST,z:PH+.005,t:.005,m:'steel'}],
+    plinths:[{x:POST/2,y:0,w:.6,d:.6,h:.04,z0:-.02},{x:XP2+POST/2,y:0,w:.6,d:.6,h:.04,z0:-.02},{x:xb,y:yb,w:.3,d:.3,h:.03,z0:-.015}],
+    site:{bounds:[-3,-6,W+3,5], ground:'grass', concs:[{x:XA0,y:-6,w:XP2-XA0,d:6.4}], trees:[[-4.5,-7.5,1.1],[W+4.5,-7,1.2]]},
+    cams:{corner:[[6.4,2.3,5.2],[2.2,.85,0]], street:[[2.2,1.4,6.8],[2.2,.85,0]], back:[[-1.6,2.3,-5.4],[2.2,.85,0]], aerial:[[7,6.5,6.5],[2.2,.5,0]]} };
+})();
+// gate without footings, used only to produce the redrawn elevations and section
+window.PROJECT3D.gate2d=Object.assign({},window.PROJECT3D.gate,{plinths:[]});
