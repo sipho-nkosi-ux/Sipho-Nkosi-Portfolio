@@ -29,7 +29,6 @@ const xBrace = (a,b,z0,z1,s,mm)=>[{a:[a[0],a[1],z0],b:[b[0],b[1],z1],s:s||.08,m:
     blocks:[{x:0,y:0,w:W,d:D,h:4.016,mat:'brick',roof:{type:'none'}},
             {x:0,y:0,z0:4.016,w:W,d:D,h:2.214,mat:'metal',roof:{type:'mono',pitch:11,fall:'n',oh:.35,mat:'metal'}}],
     open:[{b:0,f:'E',at:2.4,w:.9,k:'door'},{b:0,f:'S',at:2.95,w:1.8,k:'door'},{b:1,f:'W',at:1.5,w:2.8,h:.6,sill:.15,k:'void'},{b:1,f:'N',at:2.2,w:3.2,h:.6,sill:.15,k:'void'}],
-    tanks:[{x:13,y:2.2,r:1.1,z0:0,h:5.0,dome:true,m:'tank',bands:[1.5,3.5],bg:true}],
     cols:[[0,0],[W,0],[0,D],[W,D]].map(([x,y])=>({x,y,h:6.35,sq:true})),
     plinths:[[0,0],[W,0],[0,D],[W,D]].map(([x,y])=>({x,y,w:.6,h:.75,z0:-.45})),
     members:[{a:[1.0,D/2,5.9],b:[W-1.0,D/2,5.9],s:[.2,.3],m:'steel'}],
@@ -57,7 +56,6 @@ const xBrace = (a,b,z0,z1,s,mm)=>[{a:[a[0],a[1],z0],b:[b[0],b[1],z1],s:s||.08,m:
     ladders:[{x:1.0,y:yA-.05,z0:0,z1:zd,face:180,cage:true}],
     hrails:[{pts:[[1.6,yA],[0,yA],[0,yK],[1.68,yK],[1.68,yJ],[16.21,yJ],[16.21,yK],[17.89,yK],[17.89,4.8],[18.89,4.8],[18.89,3.0],[17.89,3.0],[17.89,yA],[16.96,yA]],z:zd},
             {pts:[[16.96,-.75],[17.89,-.75],[17.89,0]],z:zd},{pts:[[11.8,-.75],[13.6,-.75]],z:3.0},{pts:[[1.9,yA],[8.2,yA]],z:zd}],
-    tanks:[3.235,8.945,14.655].map(x=>({x,y:4.95,r:1.8,z0:7.36,h:4.85,dome:true,cone:.7,legs:4,legZ:zd,m:'tank',bands:[8.4,9.9,11.4]})),
     site:{bounds:[-2,-2,20,9], ground:'gravel', concs:[{x:-1,y:-1.2,w:20.5,d:9.5}], trees:[[-5,12,1.3],[23,-4,1.2]]},
     cams:{corner:[[27,9,-12],[9,5,3.5]], street:[[9,3.5,-17],[9,6,3.5]], back:[[-8,8,19],[9,5,3.5]], aerial:[[28,26,-18],[9,3,3.5]]}
   };

@@ -1,7 +1,7 @@
 # Sipho Nkosi – Portfolio
 
 Structural design and drafting portfolio: steel and concrete structures, foundations, industrial and residential buildings.
-Live at **https://sipho-nkosi-ux.github.io/Sipho-Nkosi-Portfolio/**
+Live at **https://siphonkosi.co.za** (custom domain set in `CNAME`)
 
 A static website: no build step is needed to host it. GitHub Pages serves this folder as-is.
 
@@ -35,3 +35,6 @@ Load the model on any project page, then: drag to orbit, scroll to zoom, right-d
 Build sequence · section slider · floors · lift roof · auto-rotate · full screen (Esc to exit).
 
 Engineering design calculations and reports are available on request.
+
+## Credits
+Icons: [Tabler Icons](https://tabler.io/icons) (MIT licence). Fonts: Inter, Instrument Serif and JetBrains Mono (SIL Open Font Licence), hosted in `fonts/`.

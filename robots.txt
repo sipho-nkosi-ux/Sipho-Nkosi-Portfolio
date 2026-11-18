@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /embalenhle-3d.html
-Sitemap: https://sipho-nkosi-ux.github.io/Sipho-Nkosi-Portfolio/sitemap.xml
+Sitemap: https://siphonkosi.co.za/sitemap.xml
