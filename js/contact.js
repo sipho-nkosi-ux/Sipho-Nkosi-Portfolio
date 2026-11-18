@@ -12,7 +12,7 @@ window.SITE = {
   emailReversed: 'moc.liamg@iksnynsmohpis',
   linkedin: 'https://www.linkedin.com/in/sipho-nkosi',
   cv: '',
-  goatcounter: 'siphonkosi'
+  goatcounter: 'sipho'
 };
 
 (function(){ const S=window.SITE, mail=()=>S.emailReversed.split('').reverse().join('');

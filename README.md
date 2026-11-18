@@ -20,7 +20,7 @@ Messages are delivered by FormSubmit (formsubmit.co) to the email in `js/contact
 The **first** message triggers a one-time activation email from FormSubmit — click the link in it, and every message after that arrives in your inbox.
 
 ## Visitor counting
-Uses GoatCounter (free, no cookies). Sign up at goatcounter.com with the code `siphonkosi`, then in its settings tick
+Uses GoatCounter (free, no cookies). Sign up at goatcounter.com with the code `sipho`, then in its settings tick
 *"Allow adding visitor counts on your website"* so the total shows in the site footer.
 
 ## Structure
