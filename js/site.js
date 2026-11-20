@@ -46,10 +46,13 @@ const lb=$('#lb');
 if(lb){ const st=$('.stage',lb), im=$('img',st), T=$('.t',lb), S=$('.s',lb), C=$('.cnt',lb); const L=$$('[data-lb]'); let cur=0, s=1, tx=0, ty=0;
   const ap=(dx=0)=>{ im.style.transform=`translate(${tx+dx}px,${ty}px) scale(${s})`; };
   function fitIt(){ const W=st.clientWidth,H=st.clientHeight,w=im.naturalWidth,h=im.naturalHeight; if(!w) return; s=Math.min(W/w,H/h)*.94; tx=(W-w*s)/2; ty=(H-h*s)/2; im.style.transition='none'; ap(); im.style.opacity=1; }
+  // phones and tablets get the 1000 px versions only (3D renders excepted)
+  const small=matchMedia('(pointer: coarse), (max-width: 900px)').matches;
+  const src=u=>small&&!/\/3d-/.test(u)?u.replace(/^img\/([^/]+)\.(jpe?g|png)$/,'img/m/$1.jpg'):u;
   let back=null;
   function open(i,dir=0){ if(!lb.classList.contains('open')) back=document.activeElement; cur=(i+L.length)%L.length; const el=L[cur];
     T.textContent=el.dataset.cap||''; S.textContent=el.dataset.sc||''; if(C) C.textContent=L.length>1?(cur+1)+' / '+L.length:'';
-    im.style.opacity=dir?0:1; im.onload=fitIt; im.src=el.dataset.lb; if(im.complete&&im.naturalWidth) fitIt();
+    im.style.opacity=dir?0:1; im.onload=fitIt; im.src=src(el.dataset.lb); if(im.complete&&im.naturalWidth) fitIt();
     lb.classList.add('open'); document.body.style.overflow='hidden'; $('[data-x=close]',lb).focus(); }
   function close(){ lb.classList.remove('open'); document.body.style.overflow=''; if(back&&back.focus) back.focus(); }
   function step(d){ if(L.length<2) return; im.style.transition='transform .22s var(--ease), opacity .22s'; im.style.opacity=0; ap(-d*st.clientWidth*.35); setTimeout(()=>open(cur+d,d),200); }
