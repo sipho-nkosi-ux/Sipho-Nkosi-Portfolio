@@ -259,3 +259,9 @@ footer p{margin:0;max-width:900px}
 .cform button[disabled]{opacity:.6;cursor:wait}
 #visits{margin:14px 0 0}
 @media(max-width:620px){.cform .f2{grid-template-columns:1fr}}
+
+/* drawing protection */
+img,canvas{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.g img,.lb .stage img,.pic img,.phero img,.iw img,.v3d-stage,.v3d .poster{transition:filter .15s}
+html.shield .g img,html.shield .lb .stage img,html.shield .pic img,html.shield .phero img,html.shield .iw img,html.shield .v3d-stage,html.shield .v3d .poster{filter:blur(28px) grayscale(1);transition:none}
+@media print{ body *{display:none!important} body:after{content:"Printing is disabled on this site. Drawings are available on request: siphonkosi.co.za/#contact";display:block;font:16px sans-serif;padding:40px} }

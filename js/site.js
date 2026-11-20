@@ -111,3 +111,18 @@ if(host){ const id=host.dataset.id, emb=host.classList.contains('emb');
   addEventListener('keydown',e=>{ if(e.key==='Escape'&&host.classList.contains('pseudo-fs')){ host.classList.remove('pseudo-fs'); window.V3D&&V3D.resize&&V3D.resize(); } });
 }
 })();
+
+/* ---- drawing protection: no right-click/save/drag/print, and drawings blur when a screenshot tool is likely ---- */
+(function(){ const D=document, H=D.documentElement;
+  const isArt=t=>t&&t.closest&&t.closest('img,canvas,figure,.lb,.v3d,.pic,.phero,.iw,picture,svg');
+  D.addEventListener('contextmenu',e=>{ if(isArt(e.target)) e.preventDefault(); });
+  D.addEventListener('dragstart',e=>{ if(isArt(e.target)) e.preventDefault(); });
+  let tm=0; const shield=(ms)=>{ H.classList.add('shield'); clearTimeout(tm); if(ms) tm=setTimeout(()=>H.classList.remove('shield'),ms); };
+  addEventListener('keydown',e=>{ const k=(e.key||'').toLowerCase();
+    if((e.ctrlKey||e.metaKey)&&['s','p','u'].includes(k)){ e.preventDefault(); return; }
+    if(k==='printscreen'||k==='meta'||k==='os'||(e.metaKey&&e.shiftKey)||(e.ctrlKey&&e.shiftKey&&k==='s')) shield(2500); },true);
+  addEventListener('keyup',e=>{ if((e.key||'').toLowerCase()==='printscreen'){ shield(2500); try{ navigator.clipboard&&navigator.clipboard.writeText(''); }catch(_){} } },true);
+  addEventListener('blur',()=>setTimeout(()=>{ if(!(D.activeElement&&D.activeElement.tagName==='IFRAME')) shield(0); },0)); addEventListener('focus',()=>setTimeout(()=>H.classList.remove('shield'),250));
+  D.addEventListener('visibilitychange',()=>{ if(D.hidden) shield(0); });
+  addEventListener('beforeprint',()=>shield(0)); addEventListener('afterprint',()=>H.classList.remove('shield'));
+})();
