@@ -213,9 +213,11 @@ footer p{margin:0;max-width:900px}
 .lb .bar .sp{flex:1}
 .lb .bar button{min-width:40px;height:40px;padding:0 12px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;font:500 14px var(--sans);cursor:pointer}
 .lb .bar button:hover{background:rgba(255,255,255,.18)}
-.lb .stage{flex:1;position:relative;overflow:hidden;cursor:grab;touch-action:none}
+.lb{touch-action:none;overscroll-behavior:contain}
+.lb .stage{flex:1;position:relative;overflow:hidden;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.lb .bar .cnt{font:500 11px var(--mono);color:rgba(255,255,255,.6);letter-spacing:.06em;min-width:4ch;text-align:center}
 .lb .stage.drag{cursor:grabbing}
-.lb .stage img{position:absolute;left:0;top:0;transform-origin:0 0;background:#fff;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.5);max-width:none;user-select:none;-webkit-user-drag:none}
+.lb .stage img{position:absolute;left:0;top:0;transform-origin:0 0;background:#fff;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.5);max-width:none;user-select:none;-webkit-user-drag:none;-webkit-touch-callout:none;pointer-events:none;will-change:transform}
 
 @media(max-width:960px){
   .hero .wrap{grid-template-columns:1fr;gap:36px;padding-top:56px}
