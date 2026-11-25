@@ -1,3 +1,5 @@
+/* frame guard: if another website shows this site inside a frame, break out of it (own pages may still frame each other) */
+(function(){ try{ if(window.top!==window.self && window.top.location.hostname!==location.hostname) throw 0; }catch(_){ try{ window.top.location=window.self.location.href; }catch(__){ document.documentElement.style.display='none'; } } })();
 /* Sipho Nkosi – Portfolio · shared behaviour */
 (function(){
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];

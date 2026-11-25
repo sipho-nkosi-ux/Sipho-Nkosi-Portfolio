@@ -33,7 +33,7 @@ P.secunda = {
     trees:[[-2,-.5,1.3],[14,6,1.2],[-12,4,1.4],[9,20,1.3],[-14,15,1.1]], shrubs:[[6,8.6,.5],[-1,3,.6],[13.5,1,.5]]}
 };
 
-// ---------------- ERF 1/887 DOORNPOORT — new double-storey dwelling ----------------
+// ---------------- DOORNPOORT — new double-storey dwelling ----------------
 P.doornpoort = {
   fl:3.0, front:[0,1],
   blocks:[
@@ -61,7 +61,7 @@ P.doornpoort = {
     trees:[[19,15,1.3],[-1.2,18.5,1.0],[3,-1.5,1.2],[16,-1.5,1.2]], shrubs:[[8,11,.6],[15,11,.6],[20.5,11,.5]]}
 };
 
-// ---------------- ERF 1482 CHANTELLE X14 — additions, single storey ----------------
+// ---------------- CHANTELLE — additions, single storey ----------------
 P.chantelle = {
   fl:2.7, front:[0,1], view:'corner',
   cams:{corner:[[27,8,31],[9,1.5,14]]},
@@ -92,7 +92,7 @@ P.chantelle = {
     trees:[[-1.5,4,1.3],[2,27,1.2],[9,26,1.1],[20,8,1.2]], shrubs:[[9.5,6,.6],[4,5,.5],[10.5,21,.5]]}
 };
 
-// ---------------- ERF 1496 CAPITAL PARK — two-storey boarding house ----------------
+// ---------------- CAPITAL PARK — two-storey boarding house ----------------
 const cpS_GF=[1.2,3.6,6.0,8.4,10.8,13.1,16.1,19.7,22.9,25.4,28.5,31.8], cpS_FF=[1.6,5.3,9.0,12.8,16.6,20.3,24.1,27.9,31.6];
 P.capitalpark = {
   fl:2.9, front:[0,1], view:'corner',
@@ -124,7 +124,7 @@ P.capitalpark = {
     trees:[[42.5,4,1.4],[2,2,1.3],[42.5,18,1.2],[6,8,1.1]], shrubs:[[24,7.3,.5],[39,7.3,.5],[1,11,.6]]}
 };
 
-// ---------------- ERF 2433 — 32-unit two-storey boarding house ----------------
+// ---------------- BOARDING HOUSE — 32-unit two-storey boarding house ----------------
 const unitsA=[...Array(8)].map((_,i)=>.23+i*3.23), unitsB=[...Array(8)].map((_,i)=>1.0+i*3.23);
 const colsA=[1.2,5.3,9.4,13.5,17.6,21.7,25.8].map(x=>({b:0,x,y:7.82,h:5.03,sq:true}));
 const colsB=[2.5,6.6,10.7,14.8,18.9,23.0,27.1].map(x=>({b:2,x,y:6.43,h:5.03,sq:true}));

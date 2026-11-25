@@ -21,7 +21,7 @@ Object.assign(P.secunda,{ tw:.22,
     ['sa','Section A-A','section',{face:'E',cut:{at:6.6}}]]
 });
 
-// ---------- ERF 1/887 DOORNPOORT ----------
+// ---------- DOORNPOORT ----------
 Object.assign(P.doornpoort,{ tw:.22,
   rooms:[R(.22,.22,5.78,7.46,'Double garage',{garage:true}),R(6.22,.22,1.5,1.5,'Pantry',{nodim:true}),R(7.83,.22,2.5,4.38,'Kitchen'),R(6.22,1.83,1.61,2.77,''),R(10.33,.22,4.21,4.38,'Dining'),
     R(12.9,.22,1.6,2.3,'',{stair:{dir:'y',n:13},stairR:true}),R(14.65,.22,1.8,3.22,'Laundry',wet),R(16.56,.22,1.08,3.22,'WC',{wet:true,nodim:true}),R(17.75,.22,1.92,3.22,'En-suite',wet),
@@ -40,7 +40,7 @@ Object.assign(P.doornpoort,{ tw:.22,
     ['sa','Section A-A','section',{face:'S',cut:{at:6.2}}]]
 });
 
-// ---------- ERF 1482 CHANTELLE X14 ----------
+// ---------- CHANTELLE ----------
 Object.assign(P.chantelle,{ tw:.22,
   rooms:[R(8.38,.22,3.6,3.59,'Study'),R(12.09,.22,2.4,1.83,'Bath 2',{wet:true,nodim:true}),R(12.09,2.16,2.4,1.87,'Porch',{outside:true,nodim:true}),R(14.6,.22,3.8,3.59,'Store room'),
     R(.26,6.72,2.0,1.88,'Dressing',{nodim:true}),R(.26,8.71,2.0,2.49,'En-suite',wet),R(2.37,6.72,3.99,4.48,'Master|bedroom'),
@@ -57,7 +57,7 @@ Object.assign(P.chantelle,{ tw:.22,
     ['sa','Section A-A','section',{face:'W',cut:{at:7.0}}]]
 });
 
-// ---------- ERF 1496 CAPITAL PARK ----------
+// ---------- CAPITAL PARK ----------
 (()=>{ const rooms=[], doors=[], fit=[];
   const add=(x0,x1,y0,y1,n,o)=>rooms.push(R(x0,y0,x1-x0,y1-y0,n,o));
   // ground floor
@@ -92,7 +92,7 @@ Object.assign(P.chantelle,{ tw:.22,
       ['sa','Section A-A','section',{face:'E',cut:{at:19.2}}]] });
 })();
 
-// ---------- ERF 2433 BOARDING HOUSE ----------
+// ---------- STUDENT BOARDING HOUSE ----------
 (()=>{ const rooms=[], doors=[], fit=[];
   for(let L=0;L<2;L++){ for(let i=0;i<8;i++){ const a=.23+i*3.23, n=L*16+i+1;
       rooms.push(R(a,.23,3.0,3.0,'Unit '+n,{b:0,lvl:L,nodim:true}),R(a+1.41,3.23,1.59,2.85,'',{b:0,lvl:L}),R(a,3.34,1.3,2.74,'',{b:0,lvl:L,wet:true}));

@@ -91,7 +91,7 @@ section.block{padding:110px 0}
 .svc{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .svc>div{padding:30px 26px 30px 0}
 .svc>div+div{padding-left:26px;border-left:1px solid var(--line)}
-.svc h4{margin:12px 0 6px;font:600 17px var(--sans);letter-spacing:-.01em}
+.svc h3,.svc h3,.svc h4{margin:12px 0 6px;font:600 17px var(--sans);letter-spacing:-.01em}
 .svc p{margin:0;color:var(--ink2);font-size:14.5px}
 .svc .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--pill);color:var(--ink)}
 .svc .ic svg{width:24px;height:24px;stroke-width:1.6}
@@ -99,7 +99,7 @@ section.block{padding:110px 0}
 /* standards */
 .std{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .std .box{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 22px 18px;box-shadow:var(--shadow)}
-.std h4{margin:0 0 12px;font:400 24px/1.1 var(--display)}
+.std h3,.std h4{margin:0 0 12px;font:400 24px/1.1 var(--display)}
 .std ul{list-style:none;margin:0;padding:0}
 .std li{display:grid;grid-template-columns:132px 1fr;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:14px;color:var(--ink2)}
 .std li b{font:500 12px/1.5 var(--mono);color:var(--ink);letter-spacing:.01em}
@@ -110,8 +110,8 @@ section.block{padding:110px 0}
 /* about + contact */
 .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
 .portrait{aspect-ratio:4/5;border-radius:var(--r);background:var(--bg2);display:grid;place-items:center;position:relative;overflow:hidden;border:1px solid var(--line)}
-.portrait b{font:400 120px var(--display);color:var(--ink3);opacity:.45;letter-spacing:-.04em}
-.portrait small{position:absolute;bottom:14px;left:14px}
+.portrait b{font:400 120px var(--display);color:var(--ink3);letter-spacing:-.04em}
+.portrait small{position:absolute;bottom:14px;left:14px;color:var(--ink2)}
 .about p{color:var(--ink2);font-size:17px;max-width:620px}
 .creds{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:30px 0}
 .cred{padding:16px 18px;border-radius:var(--rs);background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow)}
@@ -265,3 +265,11 @@ img,canvas{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-web
 .g img,.lb .stage img,.pic img,.phero img,.iw img,.v3d-stage,.v3d .poster{transition:filter .15s}
 html.shield .g img,html.shield .lb .stage img,html.shield .pic img,html.shield .phero img,html.shield .iw img,html.shield .v3d-stage,html.shield .v3d .poster{filter:blur(28px) grayscale(1);transition:none}
 @media print{ body *{display:none!important} body:after{content:"Printing is disabled on this site. Drawings are available on request: siphonkosi.co.za/#contact";display:block;font:16px sans-serif;padding:40px} }
+
+.next .go{display:inline-flex;gap:8px;align-items:center;margin-top:22px;font-weight:500;font-size:15px;border-bottom:1px solid var(--ink);padding-bottom:3px;transition:gap .25s var(--ease)}
+.next:hover .go{gap:14px}
+.pn{display:grid;grid-template-columns:1fr auto;gap:16px;margin:18px 0 0}
+.pn a{display:flex;flex-direction:column;gap:6px;padding:18px 20px;border:1px solid var(--line);border-radius:var(--r);background:var(--card);font:400 22px/1.15 var(--display);transition:border-color .2s}
+.pn a:last-child{text-align:right}
+.pn a:hover{border-color:var(--ink)}
+@media (max-width:700px){.pn{grid-template-columns:1fr}.pn a:last-child{text-align:left}}
